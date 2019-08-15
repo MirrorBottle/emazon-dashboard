@@ -7,12 +7,14 @@
 				<div class="form-group">
 					<div class="form-label-group">
 						<input type="email" id="email" name="email" class="form-control" placeholder="Email address" autofocus>
+						<!-- <small class="text-danger ml-1"></small> -->
 						<label for="email">Email address</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="form-label-group">
 						<input type="password" id="password" name="password" class="form-control" placeholder="Password">
+						<!-- <small class="text-danger ml-1"></small> -->
 						<label for="password">Password</label>
 					</div>
 				</div>
