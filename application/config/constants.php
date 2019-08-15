@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+define('ASSETS', 'http://localhost/myapp/assets');
+
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace
