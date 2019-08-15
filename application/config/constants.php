@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-define('ASSETS', 'http://localhost/myapp/assets');
+define('ASSETS', 'http://localhost/myapp/assets/');
 
 /*
 |--------------------------------------------------------------------------
