@@ -16,7 +16,10 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= ASSETS; ?>vendor/sb-admin/css/sb-admin.css" rel="stylesheet">
+    
+    <!-- Original CSS -->
+    <link rel="stylesheet" href="<?= ASSETS; ?>css/auth.css">
 
 </head>
 
-<body class="bg-dark">
+<body class="auth-bg">
