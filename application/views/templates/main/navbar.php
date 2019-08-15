@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top justify-content-between">
-	<div class="col-lg-6">
+	<div class="col-lg-6 d-flex align-items-center">
 		<a class="navbar-brand mr-1" href="<?= base_url(); ?>">Emazon</a>
 
-		<button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+		<button class="btn btn-link btn-sm text-white order-1 order-sm-0 mt-1" id="sidebarToggle" href="#">
 			<i class="fas fa-bars"></i>
 		</button>
 	</div>
@@ -16,7 +16,7 @@
 			<li class="nav-item dropdown no-arrow">
 				<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">
-					<i class="fas fa-user-circle fa-fw"></i>
+					<img src="<?= ASSETS; ?>img/default.jpg" width="30" height="30" class="rounded-pill">
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 					<a class="dropdown-item" href="#">Settings</a>
