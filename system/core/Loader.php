@@ -50,6 +50,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_Loader {
 
+	public function main_view($pages, $data) 
+	{
+		$this->view('templates/main/header', $data);
+        $this->view('templates/main/navbar', $data);
+        $this->view('templates/main/sidebar', $data);
+        $this->view($pages, $data);
+        $this->view('templates/main/footer');
+	}
+
 	// All these are set automatically. Don't mess with them.
 	/**
 	 * Nesting level of the output buffering mechanism
