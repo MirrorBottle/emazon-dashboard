@@ -27,7 +27,6 @@
 			</form>
 			<div class="text-center">
 				<a class="d-block small mt-3" href="<?= base_url('register'); ?>">Register an Account</a>
-				<a class="d-block small" href="<?= base_url('forgot_password'); ?>">Forgot Password?</a>
 			</div>
 		</div>
 	</div>
