@@ -4,21 +4,21 @@
 		User Activity Log's</div>
 	<div class="card-body">
 		<div class="table-responsive">
-			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+			<table class="table" width="100%" cellspacing="0">
 				<thead>
 					<tr>
-						<th>Date</th>
-						<th>Log</th>
-						<th></th>
+						<th class="table-bordered">Date</th>
+						<th class="table-bordered border-right-0">Log</th>
+						<th class="table-bordered border-left-0"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td class="align-middle">2019/8/16</td>
-						<td class="align-middle">
+						<td class="align-middle table-bordered">2019/8/16</td>
+						<td class="align-middle table-bordered border-right-0">
 							Eddy Gunawan was deleted by <a href="#">M. Novil Fahlevy</a>
 						</td>
-						<td class="align-middle text-center">
+						<td class="align-middle text-right table-bordered border-left-0">
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteLog">
 								<span class="fas fa-trash-alt"></span>
 							</button>
