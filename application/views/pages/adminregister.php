@@ -10,7 +10,7 @@
 				<div class="form-group">
 					<input type="text" class="form-control" id="email" name="email" placeholder="Email address">
 				</div>
-				<button type="submit" name="register" class="btn btn-primary w-100">Register</button>
+				<button type="submit" name="register" class="btn btn-primary w-100">Send Verification Email</button>
 			</form>
 		</div>
 	</div>
