@@ -48,6 +48,9 @@
 <script src="<?= ASSETS; ?>vendor/sb-admin/js/demo/datatables-demo.js"></script>
 <script src="<?= ASSETS; ?>vendor/sb-admin/js/demo/chart-area-demo.js"></script>
 
+<!-- Internal JS -->
+<script src="<?= ASSETS; ?>js/user.js"></script>
+
 </body>
 
 </html>
