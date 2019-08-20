@@ -89,7 +89,7 @@ new class User {
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary ml-1">Sign in</button>
+                    <button type="submit" class="btn btn-primary ml-1">Edit</button>
                 </form>
             `;
 
