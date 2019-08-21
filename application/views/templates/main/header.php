@@ -20,6 +20,9 @@
 	<!-- Custom styles for this template-->
 	<link href="<?= ASSETS; ?>vendor/sb-admin/css/sb-admin.css" rel="stylesheet">
 
+	<!-- My Own JS Library -->
+	<script src="<?= ASSETS; ?>js/myLib.js"></script>
+
 </head>
 
 <body id="page-top">

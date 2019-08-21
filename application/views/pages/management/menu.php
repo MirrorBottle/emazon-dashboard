@@ -27,7 +27,7 @@
 								tooltip="true" title="Access" data-placement="top">
 								<span class="fas fa-lock"></span>
 							</button>
-							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteMenu"
+							<button type="button" class="btn btn-danger" id="deleteMenuButton" data-toggle="modal" data-target="#deleteMenu"
 								tooltip="true" title="Delete" data-placement="top">
 								<span class="fas fa-trash-alt"></span>
 							</button>
@@ -89,10 +89,14 @@
 			</div>
 			<div class="modal-body">
                 Are you sure you want to delete 'Dashboard' menu?
+				<div class="alert alert-info p-1 text-center mt-3 mb-1">
+					<span class="text-muted" id="confirmDeleteMenuCode"></span>
+				</div>
+				<input type="text" class="form-control" id="confirmDeleteMenuInput" placeholder="Enter code above to confirm deleting menu...">
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-danger">Delete</button>
+				<button type="submit" class="btn btn-danger" id="confirmDeleteMenuButton" disabled>Delete</button>
 			</div>
 		</div>
 	</div>

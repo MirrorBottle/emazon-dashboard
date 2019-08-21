@@ -50,6 +50,7 @@
 
 <!-- Internal JS -->
 <script src="<?= ASSETS; ?>js/user.js"></script>
+<script src="<?= ASSETS; ?>js/menu.js"></script>
 
 <script>
 	$('[tooltip=true]').tooltip();
