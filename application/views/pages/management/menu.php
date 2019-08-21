@@ -138,7 +138,9 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				Are you sure you want to delete 'Dashboard' menu?
+				<span class="text-danger">
+					Are you sure you want to delete 'Dashboard' menu?
+				</span>
 				<div class="alert alert-info p-1 text-center mt-3 mb-1">
 					<span class="text-muted" id="codeDeleteMenu"></span>
 				</div>
