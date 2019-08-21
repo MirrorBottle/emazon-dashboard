@@ -19,16 +19,15 @@
 						</td>
 						<td class="align-middle">1</td>
 						<td class="align-middle text-right">
-							<button type="button" class="btn btn-primary" data-toggle="modal"
-								data-target="#editMenuModal" tooltip="true" title="Edit" data-placement="top">
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editMenuModal" tooltip="true" title="Edit" data-placement="top" id="idForEdit" data-id="1">
 								<span class="fas fa-pencil-alt"></span>
 							</button>
 							<button type="button" class="btn btn-success" data-toggle="modal"
-								data-target="#accessMenuModal" tooltip="true" title="Access" data-placement="top">
+								data-target="#accessMenuModal" tooltip="true" title="Access" data-placement="top" id="idForAccess" data-id="1">
 								<span class="fas fa-lock"></span>
 							</button>
 							<button type="button" class="btn btn-danger" id="deleteMenu" data-toggle="modal"
-								data-target="#deleteMenuModal" tooltip="true" title="Delete" data-placement="top">
+								data-target="#deleteMenuModal" tooltip="true" title="Delete" data-placement="top" id="idForDelete" data-id="1">
 								<span class="fas fa-trash-alt"></span>
 							</button>
 						</td>
@@ -70,7 +69,10 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Edit</button>
+					<form method="post">
+						<input type="hidden" name="menuId" value="1" id="menuIdForEdit">
+						<button type="submit" class="btn btn-primary">Edit</button>
+					</form>
 				</div>
 			</form>
 		</div>
@@ -119,7 +121,10 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-success">Change</button>
+					<form method="post">
+						<input type="hidden" name="menuId" value="1" id="menuIdForAccess">
+						<button type="submit" class="btn btn-success">Change</button>
+					</form>
 				</div>
 			</form>
 		</div>
@@ -149,7 +154,10 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-danger" id="confirmDeleteMenu" disabled>Delete</button>
+				<form method="post">
+					<input type="hidden" name="userId" value="1" id="menuIdForDelete">
+					<button type="submit" class="btn btn-danger" id="confirmDeleteMenu" disabled>Delete</button>
+				</form>
 			</div>
 		</div>
 	</div>
