@@ -51,6 +51,10 @@
 <!-- Internal JS -->
 <script src="<?= ASSETS; ?>js/user.js"></script>
 
+<script>
+	$('[tooltip=true]').tooltip();
+</script>
+
 </body>
 
 </html>
