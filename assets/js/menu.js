@@ -1,12 +1,12 @@
-let button = $('#confirmDeleteMenuButton');
+let button = $('#confirmDeleteMenu');
 let code;
 
-$('#deleteMenuButton').on('click', () => {
+$('#deleteMenu').on('click', () => {
     code = uniqid();
-    $('#confirmDeleteMenuCode').text(code);
-    $('#confirmDeleteMenuInput').val('');
+    $('#codeDeleteMenu').text(code);
+    $('#confirmCode').val('');
 });
 
-$('#confirmDeleteMenuInput').on('keyup', function() {
+$('#confirmCode').on('keyup', function() {
     $(button).attr('disabled', this.value !== code);
 });
