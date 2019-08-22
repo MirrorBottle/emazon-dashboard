@@ -1,13 +1,13 @@
 // Menu Delete Confirmation
-let button = $('#confirmDeleteMenu');
-let code;
+let deleteMenuButton = $('#confirmDeleteMenu');
+let deleteMenuCode;
 
 $('#idForDelete').on('click', () => {
-    code = uniqid();
-    $('#deleteMenuCode').text(code);
+    deleteMenuCode = uniqid();
+    $('#deleteMenuCode').text(deleteMenuCode);
     $('#confirmCode').val('');
 });
 
 $('#confirmCode').on('keyup', function() {
-    $(button).attr('disabled', this.value !== code);
+    $(deleteMenuButton).attr('disabled', this.value !== deleteMenuCode);
 });
