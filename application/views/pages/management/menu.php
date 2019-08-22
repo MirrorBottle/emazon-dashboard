@@ -118,7 +118,7 @@
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<form method="post">
 						<input type="hidden" name="menuId" value="1" id="menuIdForAccess">
-						<button type="submit" class="btn btn-success">Change</button>
+						<button type="submit" name="submitAccess" class="btn btn-success">Change</button>
 					</form>
 				</div>
 			</form>
@@ -151,7 +151,7 @@
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<form method="post">
 					<input type="hidden" name="menuId" value="1" id="menuIdForDelete">
-					<button type="submit" class="btn btn-danger" id="confirmDeleteMenu" disabled>Delete</button>
+					<button type="submit" name="submitDelete" class="btn btn-danger" id="confirmDeleteMenu" disabled>Delete</button>
 				</form>
 			</div>
 		</div>
