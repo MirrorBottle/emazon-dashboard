@@ -2,9 +2,9 @@
 let button = $('#confirmDeleteMenu');
 let code;
 
-$('#deleteMenu').on('click', () => {
+$('#idForDelete').on('click', () => {
     code = uniqid();
-    $('#codeDeleteMenu').text(code);
+    $('#deleteMenuCode').text(code);
     $('#confirmCode').val('');
 });
 

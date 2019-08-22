@@ -22,11 +22,13 @@
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editMenuModal" tooltip="true" title="Edit" data-placement="top" id="idForEdit" data-id="1">
 								<span class="fas fa-pencil-alt"></span>
 							</button>
-							<button type="button" class="btn btn-success" data-toggle="modal"
+
+							<button type="button" class="btn btn-success"data-toggle="modal"
 								data-target="#accessMenuModal" tooltip="true" title="Access" data-placement="top" id="idForAccess" data-id="1">
 								<span class="fas fa-lock"></span>
 							</button>
-							<button type="button" class="btn btn-danger" id="deleteMenu" data-toggle="modal"
+
+							<button type="button" class="btn btn-danger" data-toggle="modal"
 								data-target="#deleteMenuModal" tooltip="true" title="Delete" data-placement="top" id="idForDelete" data-id="1">
 								<span class="fas fa-trash-alt"></span>
 							</button>
@@ -142,7 +144,7 @@
 					Are you sure you want to delete 'Dashboard' menu?
 				</span>
 				<div class="alert alert-info p-1 text-center mt-3 mb-1">
-					<span class="text-muted" id="codeDeleteMenu"></span>
+					<span class="text-muted" id="deleteMenuCode"></span>
 				</div>
 				<input type="text" class="form-control" id="confirmCode"
 					placeholder="Enter code above to confirm deleting menu...">
