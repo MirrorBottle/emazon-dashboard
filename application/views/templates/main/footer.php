@@ -51,6 +51,7 @@
 <!-- Internal JS -->
 <script src="<?= ASSETS; ?>js/user.js"></script>
 <script src="<?= ASSETS; ?>js/menu.js"></script>
+<script src="<?= ASSETS; ?>js/role.js"></script>
 
 <script>
 	$('[tooltip=true]').tooltip();
