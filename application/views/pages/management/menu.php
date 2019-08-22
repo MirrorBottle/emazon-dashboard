@@ -49,7 +49,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form method="post">
+			<form method="post" id="editForm">
 				<div class="modal-body">
 					<div class="form-group">
 						<input type="number" class="form-control" id="menuId" name="menuId" placeholder="ID">
@@ -61,18 +61,13 @@
 						<input type="text" class="form-control" id="menuUrl" name="menuUrl" placeholder="URL">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="menuIcon" name="menuIcon"
-							placeholder="Icon (Font Awesome)">
-						<span class="text-small text-danger">Font Awesome class does not valid! Please enter a valid
-							Font Awesome classes.</span>
+						<input type="text" class="form-control" id="menuIcon" name="menuIcon" placeholder="Icon (Font Awesome)">
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<form method="post">
-						<input type="hidden" name="menuId" value="1" id="menuIdForEdit">
-						<button type="submit" class="btn btn-primary">Edit</button>
-					</form>
+					<input type="hidden" name="menuId" value="1" id="menuIdForEdit">
+					<button type="submit" name="submitEdit" value="submit" class="btn btn-primary">Edit</button>
 				</div>
 			</form>
 		</div>

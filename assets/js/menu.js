@@ -1,3 +1,4 @@
+// Menu Delete Confirmation
 let button = $('#confirmDeleteMenu');
 let code;
 
