@@ -52,7 +52,7 @@
 			<form method="post" id="editForm">
 				<div class="modal-body">
 					<div class="form-group">
-						<input type="number" class="form-control" id="menuId" name="menuId" placeholder="ID">
+						<input type="number" class="form-control" id="menuId" name="newMenuId" placeholder="ID">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" id="menuName" name="menuName" placeholder="Name">
@@ -150,7 +150,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<form method="post">
-					<input type="hidden" name="userId" value="1" id="menuIdForDelete">
+					<input type="hidden" name="menuId" value="1" id="menuIdForDelete">
 					<button type="submit" class="btn btn-danger" id="confirmDeleteMenu" disabled>Delete</button>
 				</form>
 			</div>
