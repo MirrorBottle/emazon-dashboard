@@ -7,17 +7,17 @@
 			<table class="table table-bordered" width="100%" cellspacing="0">
 				<thead>
 					<tr>
-						<th>Menu</th>
 						<th>ID</th>
+						<th>Menu</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
+						<td class="align-middle">1</td>
 						<td class="align-middle">
 							Dashboard
 						</td>
-						<td class="align-middle">1</td>
 						<td class="align-middle text-right">
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editMenuModal" tooltip="true" title="Edit" data-placement="top" id="idForEdit" data-id="1">
 								<span class="fas fa-pencil-alt"></span>
