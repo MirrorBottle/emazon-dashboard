@@ -5,7 +5,7 @@ CREATE TABLE `user`
   `last_name` text,
   `email` text,
   `password` text,
-  `photo_profile_url` text,
+  `img` text,
   `role_id` int,
   `created_at` bigint,
   `is_active` boolean
