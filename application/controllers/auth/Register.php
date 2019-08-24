@@ -9,9 +9,10 @@ class Register extends CI_Controller
 
         $this->form_validation->set_rules('firstName', 'name', 'required', ['required' => 'Please enter your first name.']);
         $this->form_validation->set_rules('lastName', 'name', 'required', ['required' => 'Please enter your last name.']);
-        $this->form_validation->set_rules('email', 'email', 'required|valid_email', [
+        $this->form_validation->set_rules('email', 'email', 'required|valid_email|is_unique[user.email]', [
             'required' => 'Please enter your email...',
-            'valid_email' => 'Please enter a valid email!'
+            'valid_email' => 'Please enter a valid email!',
+            'is_unique' => 'This email has been registered.'
         ]);
         $this->form_validation->set_rules('password', 'password', 'required|min_length[8]', [
             'required' => 'You should create a password for your account.',
