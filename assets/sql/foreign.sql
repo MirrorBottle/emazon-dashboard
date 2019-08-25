@@ -7,3 +7,5 @@ ALTER TABLE `dropdown_sub_menu` ADD FOREIGN KEY (`menu_id`) REFERENCES `menu` (`
 ALTER TABLE `access_menu` ADD FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`);
 
 ALTER TABLE `access_menu` ADD FOREIGN KEY (`role_id`) REFERENCES `user` (`role_id`);
+
+ALTER TABLE `user_token` ADD FOREIGN KEY (`email`) REFERENCES `user` (`email`);
