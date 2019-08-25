@@ -5,6 +5,7 @@
 
 			<?php if( $this->session->has_userdata('auth_message') ): ?>
 				<?php $message = $this->session->flashdata('auth_message'); ?>
+				
 				<div class="alert alert-<?= $message['type']; ?>" role="alert">
 					<?= $message['text']; ?>
 				</div>
