@@ -31,20 +31,31 @@ class Register extends CI_Controller
         {
             $this->load->model('Register_model', 'register');
             
-            $result = $this->register->create_account([
-                'id' => '',
-                'first_name' => htmlspecialchars($this->input->post('firstName', true)),
-                'last_name' => htmlspecialchars($this->input->post('lastName', true)),
-                'email' => $this->input->post('email', true),
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-                'img' => 'default.png',
-                'role_id' => 1,
-                'created_at' => time(),
-                'is_active' => 1
-            ]);
+            $email = $this->input->post('email', true);
+            // $result = $this->register->create_account([
+            //     'id' => '',
+            //     'first_name' => htmlspecialchars($this->input->post('firstName', true)),
+            //     'last_name' => htmlspecialchars($this->input->post('lastName', true)),
+            //     'email' => $email,
+            //     'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            //     'img' => 'default.png',
+            //     'role_id' => 1,
+            //     'created_at' => time(),
+            //     'is_active' => 0
+            // ]);
 
-            if( $result )
+            var_dump($this->send_mail(['email' => $email, 'token' => '123'], 'verify') ? 'email send' : 'failed'); die;
+
+            if( true )
             {
+                // $token = base64_encode(random_bytes(32));
+                // $this->db->insert('user_token', [
+                //     'id' => '',
+                //     'email' => $email,
+                //     'token' => $token
+                // ]);
+
+
                 $this->session->set_flashdata('auth_message', [
                     'text' => 'Your account has been registerd. Please check your email to verify your account.',
                     'type' => 'success'
