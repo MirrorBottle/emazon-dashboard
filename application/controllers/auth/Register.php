@@ -84,20 +84,24 @@ class Register extends CI_Controller
 
     public function sendEmailVerification($email, $token)
     {
-        if( $this->db->get_where('user', ['email' => $email])->row_array() )
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        if( $user )
         {
-            $emailSended = $this->send_mail([
-                'email' => $email,
-                'token' => $token
-            ], 'verify');
-
-            if( !$this->db->get_where('user_token', ['token' => $token])->row_array() )
+            if( !$user['is_active'] )
             {
-                $this->db->insert('user_token', [
-                    'id' => '',
+                $emailSended = $this->send_mail([
                     'email' => $email,
                     'token' => $token
-                ]);
+                ], 'verify');
+
+                if( !$this->db->get_where('user_token', ['token' => $token])->row_array() )
+                {
+                    $this->db->insert('user_token', [
+                        'id' => '',
+                        'email' => $email,
+                        'token' => $token
+                    ]);
+                }
             }
         }
 
@@ -105,6 +109,48 @@ class Register extends CI_Controller
             'text' => 'Your account has been registerd. Please check your email to verify your account. Not received the email? <a href="'. base_url("auth/register/sendemailverification/$email/$token") .'">Send it again.</a>',
             'type' => 'success'
         ]);
+
+        redirect('login');
+    }
+
+    public function verify($email, $token)
+    {
+        $user = $this->db->get_where('user', ['email' =>$email])->row_array();
+        $user_verification = $this->db->get_where('user_token', ['token' => $token])->row_array();
+
+        if( $user )
+        {
+            if( $user_verification )
+            {
+                if( $token === $user_verification['token'] )
+                {
+                    $this->db->where('email', $email);
+                    if( $this->db->update('user', ['is_active' => 1]) )
+                    {
+                        $this->db->delete('user_token', ['token' => $token]);
+
+                        $this->session->set_flashdata('auth_message', [
+                            'text' => 'Your account has been verified. You can login now :)',
+                            'type' => 'success'
+                        ]);
+                    }
+                }
+                else
+                {
+                    $this->session->set_flashdata('auth_message', [
+                        'text' => 'Failed to verify account! Token does not valid.',
+                        'type' => 'danger'
+                    ]);
+                }
+            }
+        }
+        else
+        {
+            $this->session->set_flashdata('auth_message', [
+                'text' => 'Failed to verify account! Account does not exists.',
+                'type' => 'danger'
+            ]);
+        }
 
         redirect('login');
     }
