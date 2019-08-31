@@ -120,28 +120,38 @@ class Register extends CI_Controller
 
         if( $user )
         {
-            if( $user_verification )
+            if( !$user['is_active'] )
             {
-                if( $token === $user_verification['token'] )
+                if( $user_verification )
                 {
-                    $this->db->where('email', $email);
-                    if( $this->db->update('user', ['is_active' => 1]) )
+                    if( $token === $user_verification['token'] )
                     {
-                        $this->db->delete('user_token', ['token' => $token]);
+                        $this->db->where('email', $email);
+                        if( $this->db->update('user', ['is_active' => 1]) )
+                        {
+                            $this->db->delete('user_token', ['token' => $token]);
 
+                            $this->session->set_flashdata('auth_message', [
+                                'text' => 'Your account has been verified. You can login now :)',
+                                'type' => 'success'
+                            ]);
+                        }
+                    }
+                    else
+                    {
                         $this->session->set_flashdata('auth_message', [
-                            'text' => 'Your account has been verified. You can login now :)',
-                            'type' => 'success'
+                            'text' => 'Failed to verify account! Token does not valid.',
+                            'type' => 'danger'
                         ]);
                     }
                 }
-                else
-                {
-                    $this->session->set_flashdata('auth_message', [
-                        'text' => 'Failed to verify account! Token does not valid.',
-                        'type' => 'danger'
-                    ]);
-                }
+            }
+            else
+            {
+                $this->session->set_flashdata('auth_message', [
+                    'text' => 'This account has been verified.',
+                    'type' => 'info'
+                ]);
             }
         }
         else
