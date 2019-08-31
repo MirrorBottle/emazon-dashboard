@@ -16,7 +16,7 @@
 			<li class="nav-item dropdown no-arrow">
 				<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">
-					<img src="<?= ASSETS; ?>img/default.jpg" width="30" height="30" class="rounded-pill">
+					<img src="<?= ASSETS; ?>img/profile_img/default.png" width="30" height="30" class="rounded-pill">
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 					<a class="dropdown-item" href="#">Settings</a>
