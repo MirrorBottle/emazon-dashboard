@@ -93,4 +93,46 @@ class CI_Controller {
 		return self::$instance;
 	}
 
+	public function send_mail($data, $type)
+	{
+		$this->load->library('email');
+
+		$this->email->initialize([
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_user' => 'novilfreon@gmail.com',
+			'smtp_pass' => 'lync0888x',
+			'smtp_port' => 465,
+			'mailtype' => 'html',
+			'charset' => 'utf-8',
+			'newline' => "\r\n"
+		]);
+
+		switch( $type )
+		{
+			case 'verify' :
+
+				$email = $data['email'];
+				$token = $data['token'];
+
+				$this->email->from('novilfreon@gmail.com', 'Emazon Dashboard');
+				$this->email->to($email);
+				$this->email->subject('Account Verification');
+				
+				$first_name = $this->db->get_where('user', ['email' => $email])->row_array()['first_name'];
+
+				$this->email->message(
+					"Hi ". $first_name .", <a href='". base_url("auth/register/verify/$email/$token") ."'>click to verify your account.</a>"
+				);
+
+			break;
+
+			default :
+				throw new Error($this->email->print_debugger());
+			break;
+		}
+
+		return $this->email->send();
+	}
+
 }

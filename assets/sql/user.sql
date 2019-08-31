@@ -11,6 +11,13 @@ CREATE TABLE `user`
   `is_active` boolean
 );
 
+CREATE TABLE `user_token`
+(
+  `id` int PRIMARY KEY,
+  `email` text,
+  `token` text
+);
+
 CREATE TABLE `role`
 (
   `id` int PRIMARY KEY,

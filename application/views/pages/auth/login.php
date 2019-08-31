@@ -2,7 +2,15 @@
 	<div class="card card-login mx-auto mt-5">
 		<div class="card-header text-center">Login</div>
 		<div class="card-body">
-			<!-- <div class="alert alert-success" role="alert"></div> -->
+			
+			<?php if( $this->session->has_userdata('auth_message') ): ?>
+				<?php $message = $this->session->flashdata('auth_message'); ?>
+
+				<div class="alert alert-<?= $message['type']; ?>" role="alert">
+					<?= $message['text']; ?>
+				</div>
+			<?php endif; ?>
+
 			<form method="post">
 				<div class="form-group">
 					<div class="form-label-group">
