@@ -32,32 +32,39 @@ class Register extends CI_Controller
             $this->load->model('Register_model', 'register');
             
             $email = $this->input->post('email', true);
-            // $result = $this->register->create_account([
-            //     'id' => '',
-            //     'first_name' => htmlspecialchars($this->input->post('firstName', true)),
-            //     'last_name' => htmlspecialchars($this->input->post('lastName', true)),
-            //     'email' => $email,
-            //     'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            //     'img' => 'default.png',
-            //     'role_id' => 1,
-            //     'created_at' => time(),
-            //     'is_active' => 0
-            // ]);
+            $accountCreated = $this->register->create_account([
+                'id' => '',
+                'first_name' => htmlspecialchars($this->input->post('firstName', true)),
+                'last_name' => htmlspecialchars($this->input->post('lastName', true)),
+                'email' => $email,
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'img' => 'default.png',
+                'role_id' => 1,
+                'created_at' => time(),
+                'is_active' => 0
+            ]);
 
-            var_dump($this->send_mail(['email' => $email, 'token' => '123'], 'verify') ? 'email send' : 'failed'); die;
-
-            if( true )
+            if( $accountCreated )
             {
-                // $token = base64_encode(random_bytes(32));
-                // $this->db->insert('user_token', [
-                //     'id' => '',
-                //     'email' => $email,
-                //     'token' => $token
-                // ]);
-
+                $this->load->library('encryption');
+                $token = bin2hex($this->encryption->create_key(16));
+                
+                $emailSended = $this->send_mail([
+                    'email' => $email,
+                    'token' => $token
+                ], 'verify');
+                
+                if( $emailSended )
+                {
+                    $this->db->insert('user_token', [
+                        'id' => '',
+                        'email' => $email,
+                        'token' => $token
+                    ]);
+                }
 
                 $this->session->set_flashdata('auth_message', [
-                    'text' => 'Your account has been registerd. Please check your email to verify your account.',
+                    'text' => 'Your account has been registerd. Please check your email to verify your account. Not received the email? <a href="'. base_url("auth/register/sendemailverification/$email/$token") .'">Send it again</a>.',
                     'type' => 'success'
                 ]);
 
@@ -73,5 +80,32 @@ class Register extends CI_Controller
         $this->load->view('templates/auth/header', $data);
         $this->load->view('pages/auth/register');
         $this->load->view('templates/auth/footer');
+    }
+
+    public function sendEmailVerification($email, $token)
+    {
+        if( $this->db->get_where('user', ['email' => $email])->row_array() )
+        {
+            $emailSended = $this->send_mail([
+                'email' => $email,
+                'token' => $token
+            ], 'verify');
+
+            if( !$this->db->get_where('user_token', ['token' => $token])->row_array() )
+            {
+                $this->db->insert('user_token', [
+                    'id' => '',
+                    'email' => $email,
+                    'token' => $token
+                ]);
+            }
+        }
+
+        $this->session->set_flashdata('auth_message', [
+            'text' => 'Your account has been registerd. Please check your email to verify your account. Not received the email? <a href="'. base_url("auth/register/sendemailverification/$email/$token") .'">Send it again.</a>',
+            'type' => 'success'
+        ]);
+
+        redirect('login');
     }
 }

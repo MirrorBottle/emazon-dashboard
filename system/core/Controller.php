@@ -119,8 +119,10 @@ class CI_Controller {
 				$this->email->to($email);
 				$this->email->subject('Account Verification');
 				
+				$first_name = $this->db->get_where('user', ['email' => $email])->row_array()['first_name'];
+
 				$this->email->message(
-					"<a href='". base_url("auth/verify/$email/$token") ."'>Click to verify your account.</a>"
+					"Hi ". $first_name .", <a href='". base_url("auth/register/verify/$email/$token") ."'>click to verify your account.</a>"
 				);
 
 			break;
