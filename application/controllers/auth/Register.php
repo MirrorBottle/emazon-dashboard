@@ -80,7 +80,7 @@ class Register extends CI_Controller
 
     public function sendEmailVerification($email, $token)
     {
-        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $user = $this->user->get_user_by_email($email);
         if( $user )
         {
             if( !$user['is_active'] )
