@@ -56,11 +56,7 @@ class Register extends CI_Controller
                 
                 if( $emailSended )
                 {
-                    $this->db->insert('user_token', [
-                        'id' => '',
-                        'email' => $email,
-                        'token' => $token
-                    ]);
+                    $this->register->insert_token($email, $token);
                 }
 
                 $this->session->set_flashdata('auth_message', [
@@ -96,11 +92,7 @@ class Register extends CI_Controller
 
                 if( !$this->db->get_where('user_token', ['token' => $token])->row_array() )
                 {
-                    $this->db->insert('user_token', [
-                        'id' => '',
-                        'email' => $email,
-                        'token' => $token
-                    ]);
+                    $this->register->insert_token($email, $token);
                 }
             }
         }
@@ -115,7 +107,7 @@ class Register extends CI_Controller
 
     public function verify($email, $token)
     {
-        $user = $this->db->get_where('user', ['email' =>$email])->row_array();
+        $user = $this->user->get_user_by_email($email);
         $user_verification = $this->db->get_where('user_token', ['token' => $token])->row_array();
 
         if( $user )
