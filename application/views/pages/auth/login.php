@@ -30,7 +30,7 @@
 					<div class="checkbox">
 						<label for="rememberMe">
 							<input type="checkbox" name="rememberMe" id="rememberMe">
-							Remember Password
+							Remember Me
 						</label>
 					</div>
 				</div>

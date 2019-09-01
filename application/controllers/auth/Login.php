@@ -20,10 +20,52 @@ class Login extends CI_Controller
             $user = $this->user->get_user_by_email(
                 $this->input->post('email')
             );
+
             if( $user )
             {
-                var_dump($user); die;
+                $password_form = $this->input->post('password');
+                if( password_verify($password_form, $user['password']) )
+                {
+                    if( $user['is_active'] )
+                    {
+                        if( $this->input->post('rememberMe') )
+                        {
+                            $this->load->library('encryption');
+                            setcookie(
+                                'rm', 
+                                $user['id'],
+                                time() + 60 * 60 * 24 * 360,
+                                '/'
+                            );
+                        }
+
+                        redirect('dashboard');
+                    }
+                    else
+                    {
+                        $this->session->set_flashdata('auth_message', [
+                            'text' => 'Account is not active yet, please verify your account first.',
+                            'type' => 'danger'
+                        ]);
+                    }
+                }
+                else
+                {
+                    $this->session->set_flashdata('auth_message', [
+                        'text' => 'Password was not match with the current account!',
+                        'type' => 'danger'
+                    ]);
+                }
             }
+            else
+            {
+                $this->session->set_flashdata('auth_message', [
+                    'text' => 'Account does not exists!',
+                    'type' => 'danger'
+                ]);
+            }
+
+            redirect('login');
         }
 
         $this->load->view('templates/auth/header', $data);
