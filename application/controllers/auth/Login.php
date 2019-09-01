@@ -17,7 +17,13 @@ class Login extends CI_Controller
 
         if( $this->form_validation->run() )
         {
-            
+            $user = $this->user->get_user_by_email(
+                $this->input->post('email')
+            );
+            if( $user )
+            {
+                var_dump($user); die;
+            }
         }
 
         $this->load->view('templates/auth/header', $data);
