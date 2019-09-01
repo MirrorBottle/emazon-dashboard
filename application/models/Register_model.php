@@ -8,4 +8,13 @@ class Register_model extends CI_Model
         $this->db->insert('user', $data);
         return $this->db->affected_rows();
     }
+
+    public function insert_token($email, $token)
+    {
+        $this->db->insert('user_token', [
+            'id' => '',
+            'email' => $email,
+            'token' => $token
+        ]);
+    }
 }
