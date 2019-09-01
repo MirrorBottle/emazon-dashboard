@@ -7,6 +7,25 @@ class Login extends CI_Controller
     {
         $data['title'] = 'Emazon Dashboard Login';
 
+        $this->form_validation->set_rules('email', 'email', 'required|valid_emails', [
+            'required' => 'Enter your email address.',
+            'valid_emails' => 'Enter a valid email!' 
+        ]);
+        $this->form_validation->set_rules('password', 'password', 'required', [
+            'required' => 'Enter the password!'
+        ]);
+
+        if( $this->form_validation->run() )
+        {
+            $user = $this->user->get_user_by_email(
+                $this->input->post('email')
+            );
+            if( $user )
+            {
+                var_dump($user); die;
+            }
+        }
+
         $this->load->view('templates/auth/header', $data);
         $this->load->view('pages/auth/login');
         $this->load->view('templates/auth/footer');
