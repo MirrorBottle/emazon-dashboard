@@ -30,7 +30,6 @@ class Login extends CI_Controller
                     {
                         if( $this->input->post('rememberMe') )
                         {
-                            $this->load->library('encryption');
                             setcookie(
                                 'rm', 
                                 $user['id'],
@@ -38,6 +37,15 @@ class Login extends CI_Controller
                                 '/'
                             );
                         }
+
+                        $_SESSION['user'] = [
+                            'id' => $user['id'],
+                            'email' => $user['email'],
+                            'name' => [
+                                'firstName' => $user['first_name'],
+                                'lastName' => $user['last_name']
+                            ]
+                        ];
 
                         redirect('dashboard');
                     }
