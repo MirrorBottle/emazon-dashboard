@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        check_rememberMe_cookie();
+        check_user_has_login('auth');
+    }
+
     public function index()
     {
         $data['title'] = 'Emazon Dashboard Login';
@@ -30,9 +37,10 @@ class Login extends CI_Controller
                     {
                         if( $this->input->post('rememberMe') )
                         {
+                            $this->load->library('encryption');
                             setcookie(
                                 'rm', 
-                                $user['id'],
+                                bin2hex($this->encryption->create_key(12)) . 'ab' . $user['id'],
                                 time() + 60 * 60 * 24 * 360,
                                 '/'
                             );

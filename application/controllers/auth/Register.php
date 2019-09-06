@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Register extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        check_rememberMe_cookie();
+        check_user_has_login('auth');
+    }
+
     public function index()
     {
         $data['title'] = 'Emazon Dashboard Register';
