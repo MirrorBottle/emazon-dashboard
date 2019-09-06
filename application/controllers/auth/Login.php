@@ -46,14 +46,14 @@ class Login extends CI_Controller
                             );
                         }
 
-                        $_SESSION['user'] = [
+                        $this->session->set_userdata('user', [
                             'id' => $user['id'],
                             'email' => $user['email'],
                             'name' => [
                                 'firstName' => $user['first_name'],
                                 'lastName' => $user['last_name']
                             ]
-                        ];
+                        ]);
 
                         redirect('dashboard');
                     }
