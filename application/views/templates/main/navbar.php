@@ -32,7 +32,7 @@
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="<?= base_url('logout'); ?>" data-toggle="modal" data-target="#logoutModal">Logout</a>
 				</div>
-			</li>
+			</li>	
 		</ul>
 	</div>
 </nav>

@@ -3,7 +3,7 @@
 		<i class="fas fa-folder mr-2"></i>
 		Menu List</div>
 	<div class="card-body">
-		<button type="button" class="btn btn-primary mb-3">
+		<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addMenuModal">
 			<span class="fas fa-plus"></span>
 			Add Menu
 		</button>
@@ -23,17 +23,21 @@
 							Dashboard
 						</td>
 						<td class="align-middle text-right">
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editMenuModal" tooltip="true" title="Edit" data-placement="top" id="idForEdit" data-id="1">
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#editMenuModal" tooltip="true" title="Edit" data-placement="top"
+								id="idForEdit" data-id="1">
 								<span class="fas fa-pencil-alt"></span>
 							</button>
 
-							<button type="button" class="btn btn-success"data-toggle="modal"
-								data-target="#accessMenuModal" tooltip="true" title="Access" data-placement="top" id="idForAccess" data-id="1">
+							<button type="button" class="btn btn-success" data-toggle="modal"
+								data-target="#accessMenuModal" tooltip="true" title="Access" data-placement="top"
+								id="idForAccess" data-id="1">
 								<span class="fas fa-lock"></span>
 							</button>
 
 							<button type="button" class="btn btn-danger" data-toggle="modal"
-								data-target="#deleteMenuModal" tooltip="true" title="Delete" data-placement="top" id="idForDelete" data-id="1">
+								data-target="#deleteMenuModal" tooltip="true" title="Delete" data-placement="top"
+								id="idForDelete" data-id="1">
 								<span class="fas fa-trash-alt"></span>
 							</button>
 						</td>
@@ -67,7 +71,8 @@
 						<input type="text" class="form-control" id="menuUrl" name="menuUrl" placeholder="URL">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="menuIcon" name="menuIcon" placeholder="Icon (Font Awesome)">
+						<input type="text" class="form-control" id="menuIcon" name="menuIcon"
+							placeholder="Icon (Font Awesome)">
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -157,9 +162,45 @@
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<form method="post">
 					<input type="hidden" name="menuId" value="1" id="menuIdForDelete">
-					<button type="submit" name="submitDelete" class="btn btn-danger" id="confirmDeleteMenu" disabled>Delete</button>
+					<button type="submit" name="submitDelete" class="btn btn-danger" id="confirmDeleteMenu"
+						disabled>Delete</button>
 				</form>
 			</div>
+		</div>
+	</div>
+</div>
+
+<!-- { Modal } Add Menu -->
+<div class="modal fade" id="addMenuModal" tabindex="-1" role="dialog" aria-labelledby="addMenuModal" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="addMenuModal">Add Menu</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form method="post" id="editForm">
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="number" class="form-control" id="menuId" name="newMenuId" placeholder="ID">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="menuName" name="menuName" placeholder="Name">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="menuUrl" name="menuUrl" placeholder="URL">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="menuIcon" name="menuIcon"
+							placeholder="Icon (Font Awesome)">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" name="submitAdd" value="submit" class="btn btn-primary">Add</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
