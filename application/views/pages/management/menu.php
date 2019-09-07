@@ -189,7 +189,13 @@
 						<input type="text" class="form-control" id="menuName" name="menuName" placeholder="Name">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="menuUrl" name="menuUrl" placeholder="URL">
+						<div class="dropdown">
+							<input type="text" class="form-control dropdown-toggle" id="menuUrl" name="menuUrl" placeholder="URL" data-toggle="dropdown">
+							<div class="dropdown-menu dropdown-menu-left w-100 border-dark" id="controllerList">
+								<!-- <a class="dropdown-item" href="#">Notification</a>
+								<a class="dropdown-item" href="#">Activity Log</a> -->
+							</div>
+						</div>
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" id="menuIcon" name="menuIcon"
