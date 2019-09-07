@@ -48,11 +48,7 @@ class Login extends CI_Controller
 
                         $this->session->set_userdata('user', [
                             'id' => $user['id'],
-                            'email' => $user['email'],
-                            'name' => [
-                                'firstName' => $user['first_name'],
-                                'lastName' => $user['last_name']
-                            ]
+                            'email' => $user['email']
                         ]);
 
                         redirect('dashboard');
