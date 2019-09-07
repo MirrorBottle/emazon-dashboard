@@ -38,7 +38,7 @@
 										<span class="fas fa-pencil-alt"></span>
 									</button>	
 									<button type="button" class="btn btn-danger" id="idForDelete" data-toggle="modal"
-										data-target="#DeleteRoleModal" tooltip="true" title="Delete" data-placement="top" data-id="1">
+										data-target="#DeleteRoleModal" tooltip="true" title="Delete" data-placement="top" data-id="<?= $role['id']; ?>">
 										<span class="fas fa-trash-alt"></span>
 									</button>
 								</td>
@@ -126,7 +126,7 @@
 			</div>
 			<div class="modal-body">
 				<span class="text-danger">
-					Are you sure you want to delete 'Admin' role?
+					Are you sure you want to delete this role?
 				</span>
 				<div class="alert alert-info p-1 text-center mt-3 mb-1">
 					<span class="text-muted" id="codeDeleteRole"></span>
@@ -136,8 +136,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<form method="post">
-					<input type="hidden" name="roleId" value="1" id="roleIdForDelete">
+				<form method="post" id="deleteRoleForm" action="<?= base_url('management/role/delete'); ?>">
 					<button type="submit" name="submitDelete" class="btn btn-danger" id="confirmDeleteRole"
 						disabled>Delete</button>
 				</form>

@@ -86,4 +86,26 @@ class Role extends CI_Controller
 
         redirect('management/role');
     }
+
+    public function delete($id)
+    {
+        $result = $this->Role_model->delete_role($id);
+
+        if( $result ) 
+        {
+            $this->session->set_flashdata('role_management_message', [
+                'text' => "Role has been deleted.",
+                'type' => 'success'
+            ]);
+        }
+        else
+        {
+            $this->session->set_flashdata('role_management_message', [
+                'text' => 'Failed to delete role. Something wrong!',
+                'type' => 'danger'
+            ]);
+        }
+
+        redirect('management/role');
+    }
 }

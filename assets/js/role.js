@@ -2,10 +2,12 @@
 let deleteRoleButton = $('#confirmDeleteRole');
 let deleteRoleCode;
 
-$('#idForDelete').on('click', () => {
-    deleteRoleCode = uniqid();
-    $('#codeDeleteRole').text(deleteRoleCode);
-    $('#confirmCode').val('');
+$.each($('button#idForDelete'), (i, btn) => {
+    $(btn).on('click', () => {
+        deleteRoleCode = uniqid();
+        $('#codeDeleteRole').text(deleteRoleCode);
+        $('#confirmCode').val('');
+    });
 });
 
 $('#confirmCode').on('keyup', function() {
@@ -26,5 +28,13 @@ $.each($('button#idForEdit'), (i, btn) => {
                 $('#roleNameEdit').val(name);
             }
         });
+    });
+});
+
+// Delete Role
+$.each($('button#idForDelete'), (i, btn) => {
+    $(btn).on('click', function() {
+        let id = $(this).data('id');
+        $('#deleteRoleForm').attr('action', `${BASEURL}/management/role/delete/${id}`);
     });
 });
