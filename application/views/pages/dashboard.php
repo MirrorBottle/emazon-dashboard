@@ -2,7 +2,7 @@
 	<div class="card-header">
 		<i class="fas fa-user mr-2"></i>
 		User List</div>
-	<div class="card-body">
+	<div class="card-body">	
 		<div class="table-responsive">
 			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 				<thead>

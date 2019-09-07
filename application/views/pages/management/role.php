@@ -3,6 +3,10 @@
 		<i class="fas fa-user-tag mr-2"></i>
 		Role List</div>
 	<div class="card-body">
+		<button type="button" class="btn btn-primary mb-3">
+			<span class="fas fa-plus"></span>
+			Add Role
+		</button>
 		<div class="table-responsive">
 			<table class="table table-bordered" width="100%" cellspacing="0">
 				<thead>
