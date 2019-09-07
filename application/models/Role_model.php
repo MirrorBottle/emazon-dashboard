@@ -8,8 +8,14 @@ class Role_model extends CI_Model
         return $this->db->get('role')->result_array();
     }
 
-    public function add_model($data)
+    public function add_role($data)
     {
         return $this->db->insert('role', $data);
+    }
+
+    public function edit_role($data, $last_id)
+    {
+        $this->db->where('id', $last_id);
+        return $this->db->update('role', $data);
     }
 }

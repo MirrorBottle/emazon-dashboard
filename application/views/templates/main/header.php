@@ -11,6 +11,8 @@
 
 	<title><?= $title; ?></title>
 
+	<script>const BASEURL = 'http://localhost/myapp/';</script>
+
 	<!-- Custom fonts for this template-->
 	<link href="<?= ASSETS; ?>vendor/sb-admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 

@@ -10,6 +10,12 @@ class Role extends CI_Controller
         check_user_has_login('has_login');
     }
 
+    public function get_role_info()
+    {
+        $role = $this->db->get_where('role', ['id' => $_POST['id']])->row_array();
+        echo json_encode($role);
+    }
+
     public function index()
     {
         $data['title'] = 'Emazon Dashboard Role Management';
@@ -25,7 +31,7 @@ class Role extends CI_Controller
 
         if( $id && $name )
         {
-            $result = $this->Role_model->add_model([
+            $result = $this->Role_model->add_role([
                 'id' => $id,
                 'name' => $name
             ]);
@@ -41,6 +47,38 @@ class Role extends CI_Controller
             {
                 $this->session->set_flashdata('role_management_message', [
                     'text' => 'Failed to adding role. Something wrong!',
+                    'type' => 'danger'
+                ]);
+            }
+        }
+
+        redirect('management/role');
+    }
+
+    public function edit()
+    {
+        $old_id = $this->input->post('roleId');
+        $id = $this->input->post('newRoleId');
+        $name = $this->input->post('roleName');
+
+        if( $id && $name )
+        {
+            $result = $this->Role_model->edit_role([
+                'id' => $id,
+                'name' => $name
+            ], $old_id);
+
+            if( $result ) 
+            {
+                $this->session->set_flashdata('role_management_message', [
+                    'text' => "'$name' role has been changed.",
+                    'type' => 'success'
+                ]);
+            }
+            else
+            {
+                $this->session->set_flashdata('role_management_message', [
+                    'text' => 'Failed to edit role. Something wrong!',
                     'type' => 'danger'
                 ]);
             }

@@ -34,7 +34,7 @@
 								<td class="align-middle text-right">
 									<button type="button" class="btn btn-primary" data-toggle="modal"
 										data-target="#editRoleModal" tooltip="true" title="Edit" data-placement="top"
-										id="idForEdit" data-id="1">
+										id="idForEdit" data-id="<?= $role['id']; ?>">
 										<span class="fas fa-pencil-alt"></span>
 									</button>	
 									<button type="button" class="btn btn-danger" id="idForDelete" data-toggle="modal"
@@ -61,13 +61,13 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form method="post" id="editForm">
+			<form method="post" id="editForm" action="<?= base_url('management/role/edit'); ?>">
 				<div class="modal-body">
 					<div class="form-group">
-						<input type="number" class="form-control" id="roleId" name="newRoleId" placeholder="ID">
+						<input type="number" class="form-control" id="roleIdEdit" name="newRoleId" placeholder="ID">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="roleName" name="roleName" placeholder="Name">
+						<input type="text" class="form-control" id="roleNameEdit" name="roleName" placeholder="Name">
 					</div>
 				</div>
 				<div class="modal-footer">
