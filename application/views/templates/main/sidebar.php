@@ -1,13 +1,13 @@
 <div id="wrapper">
 
 	<?php $menus = $this->menu->get_all_menu(); ?>
+	<?php $current_menu = ucfirst($this->uri->segment(1)); ?>
 
 	<!-- Sidebar -->
 	<ul class="sidebar navbar-nav">
-
 		<?php foreach( $menus as $menu ) : ?>
 			<?php if( $this->menu->is_dropdown($menu['id']) ) : ?>
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown  <?= $current_menu == $menu['name'] ? 'active' : ''; ?>">
 					<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-fw fa-folder"></i>
@@ -20,7 +20,7 @@
 					</div>
 				</li>
 			<?php else : ?>
-				<li class="nav-item">
+				<li class="nav-item <?= $current_menu == $menu['name'] ? 'active' : ''; ?>">
 					<a class="nav-link" href="<?= base_url($menu['url']); ?>">
 						<i class="<?= $menu['icon']; ?>"></i>
 						<span><?= $menu['name']; ?></span>
