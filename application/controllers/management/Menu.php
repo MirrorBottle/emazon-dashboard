@@ -17,8 +17,9 @@ class Menu extends CI_Controller
         $this->load->main_view('pages/management/menu', $data);
     }
 
-    public function get_all_controller($path = 'application/controllers/')
+    public function get_all_controller($path = '')
     {
-        
+        $controllers = scandir('application/controllers/'.$path);
+        echo json_encode($controllers);
     }
 }
