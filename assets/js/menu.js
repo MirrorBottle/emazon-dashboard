@@ -20,11 +20,12 @@ $('input#menuUrl').on('click', function() {
         url: `${BASEURL}management/menu/get_all_controller/${$(this).val()}`,
         method: 'get',
         dataType: 'json',
+        error: () => $(controllerListDropdown).html('<p class="text-center m-0">No controller or folder found.</p>'),
         success: data => {
             $(controllerListDropdown).html('');
 
             data.map(controller => {
-                if( controller != 'index.html' && controller != '.' && controller != '..' ) {
+                if( !controller.match(/(index.html|^\.)/) ) {
                     if( controller.match('.php') ) {
                         controller = controller.replace('.php', '');
                         $(controllerListDropdown).append(
@@ -41,9 +42,9 @@ $('input#menuUrl').on('click', function() {
 
             $.each($(controllerListDropdown).children(), (i, btn) => {
                 $(btn).on('click', function() {
-                    let controller = $(this).text().replace('/', '');
+                    let controller = $(this).text();
                     $(this).parent().prev().val(
-                        `${$(this).parent().prev().val()}${controller}/`.toLowerCase()
+                        `${$(this).parent().prev().val()}${controller}`.toLowerCase()
                     );
                 });
             });
