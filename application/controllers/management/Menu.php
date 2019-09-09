@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Menu extends CI_Controller
 {
-    
     public function __construct()
     {
         parent::__construct();
@@ -22,4 +21,9 @@ class Menu extends CI_Controller
         $controllers = scandir('application/controllers/'.$path);
         echo json_encode($controllers);
     }
+
+    // public function add()
+    // {
+
+    // }
 }

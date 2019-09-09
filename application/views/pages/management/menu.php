@@ -17,31 +17,38 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td class="align-middle">1</td>
-						<td class="align-middle">
-							Dashboard
-						</td>
-						<td class="align-middle text-right">
-							<button type="button" class="btn btn-primary" data-toggle="modal"
-								data-target="#editMenuModal" tooltip="true" title="Edit" data-placement="top"
-								id="idForEdit" data-id="1">
-								<span class="fas fa-pencil-alt"></span>
-							</button>
+					<?php foreach( $this->menu->get_all_menu() as $menu ) : ?>
+						<tr>
+							<td class="align-middle">1</td>
+							<td class="align-middle">
+								<?= $menu['name']; ?>
+								<?php if( $menu['is_active'] ) : ?>
+									<span class="float-right fas fa-circle text-success"></span>
+								<?php else : ?>
+									<span class="float-right fas fa-circle text-secondary"></span>
+								<?php endif; ?>
+							</td>
+							<td class="align-middle text-right">
+								<button type="button" class="btn btn-primary" data-toggle="modal"
+									data-target="#editMenuModal" tooltip="true" title="Edit" data-placement="top"
+									id="idForEdit" data-id="1">
+									<span class="fas fa-pencil-alt"></span>
+								</button>
 
-							<button type="button" class="btn btn-success" data-toggle="modal"
-								data-target="#accessMenuModal" tooltip="true" title="Access" data-placement="top"
-								id="idForAccess" data-id="1">
-								<span class="fas fa-lock"></span>
-							</button>
+								<button type="button" class="btn btn-success" data-toggle="modal"
+									data-target="#accessMenuModal" tooltip="true" title="Access" data-placement="top"
+									id="idForAccess" data-id="1">
+									<span class="fas fa-lock"></span>
+								</button>
 
-							<button type="button" class="btn btn-danger" data-toggle="modal"
-								data-target="#deleteMenuModal" tooltip="true" title="Delete" data-placement="top"
-								id="idForDelete" data-id="1">
-								<span class="fas fa-trash-alt"></span>
-							</button>
-						</td>
-					</tr>
+								<button type="button" class="btn btn-danger" data-toggle="modal"
+									data-target="#deleteMenuModal" tooltip="true" title="Delete" data-placement="top"
+									id="idForDelete" data-id="1">
+									<span class="fas fa-trash-alt"></span>
+								</button>
+							</td>
+						</tr>
+					<?php endforeach; ?>
 				</tbody>
 			</table>
 		</div>
@@ -183,7 +190,11 @@
 			<form method="post" id="editForm">
 				<div class="modal-body">
 					<div class="form-group">
-						<input type="number" class="form-control" id="menuId" name="newMenuId" placeholder="ID">
+						<?php 
+							$this->db->order_by('id', 'DESC');
+							$last_menu_id = $this->db->get('menu')->row_array()['id'] + 1;
+						?>
+						<input type="number" class="form-control" id="menuId" name="newMenuId" placeholder="ID" value="<?= $last_menu_id; ?>">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" id="menuName" name="menuName" placeholder="Name">

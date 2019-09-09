@@ -22,4 +22,12 @@ class Menu_model extends CI_Model
     {
         return $this->db->get_where('dropdown_menu', ['menu_id' => $menu_id])->num_rows();
     }
+
+    // public function add_menu($data)
+    // {
+    //     if( $this->db->insert('menu', $data) )
+    //     {
+    //         if( !$this->db->get_where('access_menu', ['']) )
+    //     }
+    // }
 }
