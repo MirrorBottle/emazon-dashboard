@@ -8,6 +8,7 @@ class Register extends CI_Controller
         parent::__construct();
         check_rememberMe_cookie();
         check_user_has_login('auth');
+        $this->load->model('Register_model', 'register');
     }
 
     public function index()
@@ -35,9 +36,7 @@ class Register extends CI_Controller
         ]);
 
         if( $this->form_validation->run() ) 
-        {
-            $this->load->model('Register_model', 'register');
-            
+        {   
             $email = $this->input->post('email', true);
             $accountCreated = $this->register->create_account([
                 'id' => '',
